@@ -12,9 +12,11 @@
 
     </head>
     <body >
+        <title>@yield('title')</title>
         <h1>Laravel 101</h1>
         <a href="/contact-us">Contactez-nous</a>
         <a href="/about">About</a>
+        <a href="/articles">Articles</a>
         @yield('content')
     </body>
 </html>

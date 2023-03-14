@@ -35,9 +35,9 @@ User::take(2)->get()->toJson();
 Un tri un peu plus complexe, on obtient une collection, ensuite on la filtre :
 ```php
 $users = User::all();
-$users->takeUntil(function($user) { 
-    return $user->id >= 3;
-});
+    $users->takeUntil(function($user) { 
+        return $user->id >= 3;
+    });
 ```
 On peut enchaîner les méthodes :
 ```php
