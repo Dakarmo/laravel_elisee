@@ -15,6 +15,10 @@ class Article extends Model
         'user_id',
         'image',
     ];
+    
+    protected $appends = [
+        'author', 'comments'
+    ];
 
     public function user()
     {
@@ -24,5 +28,15 @@ class Article extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function getAuthorAttribute()
+    {
+        return $this->user->name;
+    }
+
+    public function getCommentsAttribute()
+    {
+        return $this->comments()->with('user')->get();
     }
 }

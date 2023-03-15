@@ -16,8 +16,19 @@ class ArticlesController extends Controller
 
     public function show($id)
     {
-        $article = Article::with('user')->where('id', $id)->firsOrFail();
+        $article = Article::with(['comments' => function ($query) {
+            $query->with('user');
+        }])->findOrFail($id);
+        return view('articles.show', compact('article'));
+    }
 
-        return view('articles.show', compact('article'))
+    public function create()
+    {
+        return view('articles.create');
+    }
+
+    public function store(Request $request)
+    {
+        dd($request->all());
     }
 }

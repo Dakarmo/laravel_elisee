@@ -90,3 +90,8 @@
 
 ### Les routes 2 
     -<a href="/article/{{ $article->id }}"> === passe l'id de l'article concerné en paramètre
+
+    - Commande pour minimiser les requettes
+    $article = Article::with('user')->with(['comments' => function ($query) {
+        $query->with('user');
+    }])->findOrFail($id);

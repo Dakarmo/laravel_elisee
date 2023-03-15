@@ -17,6 +17,7 @@
         <a href="/contact-us">Contactez-nous</a>
         <a href="/about">About</a>
         <a href="/articles">Articles</a>
+        <a href="/create">Créer un article</a>
         @yield('content')
     </body>
 </html>
