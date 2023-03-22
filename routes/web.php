@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ArticlesController;
-
+use App\Http\Controllers\Auth\SessionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,10 @@ Route::get('/articles/create', [ArticlesController::class, 'store']);
 
 Route::get('/article/{article}/edit', [ArticlesController::class, 'edit']);
 
-Route::patch('/article/{article}/edit', [ArticlesController::class, 'update']);    
+Route::patch('/article/{article}/edit', [ArticlesController::class, 'update']);   
 
+Route::delete('/article/{article}/delete', [ArticlesController::class, 'delete']);    
 
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+
+Route::get('/login', [SessionsController::class, 'index'])->name('login');

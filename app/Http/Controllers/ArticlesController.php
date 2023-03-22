@@ -39,21 +39,22 @@ class ArticlesController extends Controller
             'user_id' => 'required|numeric|exists:users,id',
         ]);
         $art = Article::create($request->all());
-        dd($art);
+        return redirect('/articles')->with(['success_message' => 'Larticle a été crée !']);
     }
 
     public function edit(Article $article)
     {
-        // $article = Article::with(['comments' => function ($query) {
-        //     $query->with('user');
-        // }])->findOrFail($id);
-
         return view('articles.edit', compact('article'));
     }
 
     public function update(Request $request, Article $article) 
     {
     $article->update($request->all());
-        dd($article, $request->all());
+   
+    }
+
+    public function delete ( Article $article)
+    {
+        $article->delete();
     }
 }

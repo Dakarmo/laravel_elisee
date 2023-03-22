@@ -12,6 +12,7 @@
 
     </head>
     <body >
+        @include('messages.success')
         <title>@yield('title')</title>
         <h1>Laravel 101</h1>
         <a href="/contact-us">Contactez-nous</a>

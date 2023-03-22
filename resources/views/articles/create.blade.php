@@ -1,4 +1,3 @@
-
 <form  action="articles/create" enctype="multipart/form-data">
     @csrf
         {{-- OU --}}
