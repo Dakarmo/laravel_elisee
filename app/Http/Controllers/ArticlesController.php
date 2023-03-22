@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\User;
 
 class ArticlesController extends Controller
 {
@@ -29,6 +30,30 @@ class ArticlesController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
+        $user = User::find(1);
+        $request['user_id'] = $user->id;
+
+        $this->validate($request,[
+            'title' => 'required|string',
+            'body' => 'required|string',
+            'user_id' => 'required|numeric|exists:users,id',
+        ]);
+        $art = Article::create($request->all());
+        dd($art);
+    }
+
+    public function edit(Article $article)
+    {
+        // $article = Article::with(['comments' => function ($query) {
+        //     $query->with('user');
+        // }])->findOrFail($id);
+
+        return view('articles.edit', compact('article'));
+    }
+
+    public function update(Request $request, Article $article) 
+    {
+    $article->update($request->all());
+        dd($article, $request->all());
     }
 }

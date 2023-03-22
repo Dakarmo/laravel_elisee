@@ -29,3 +29,9 @@ Route::get('/article/{id}', [ArticlesController::class, 'show']);
 Route::get('/create', [ArticlesController::class, 'create']);
 
 Route::get('/articles/create', [ArticlesController::class, 'store']);
+
+Route::get('/article/{article}/edit', [ArticlesController::class, 'edit']);
+
+Route::patch('/article/{article}/edit', [ArticlesController::class, 'update']);    
+
+
